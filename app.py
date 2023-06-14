@@ -158,23 +158,54 @@ def consultas():
     data = request.get_json()
     conn = CONEXION(**conexion)
     respuesta = ""
-    print(data)
+    nueva_respuesta = ""
+    print(data["tipo"])
     match(data["tipo"]):
         case "Apoyos":
-            print(0)
+            tablas = "ClaveMunicipal,NombreM,YearA,Periodo,NombreA,NoApoyos,Tipo\n"
+            respuesta = conn.consultar_db(configuracion.get("consultas_apoyos",data["consulta"]).format(id=data["id"], year=data["year"]))
+            numero_de_filas = len(respuesta)
+            nueva_respuesta = tablas
+            for i in range(numero_de_filas):
+                nueva_respuesta += respuesta[i][0] +  "\n"
+            print(nueva_respuesta)
         case "Delincuencia":
-            print(1)
+            tablas = conn.consultar_db(configuracion.get("consultas", "nombres_columnas").format(tabla=data["tipo"]))
+            respuesta = conn.consultar_db(configuracion.get("consultas_delincuencia", data["consulta"]).format(id=data["id"], year=data["year"]))
+            numero_de_filas = len(respuesta)
+            nueva_respuesta = tablas[0][0] +"\n"
+            for i in range(numero_de_filas):
+                nueva_respuesta += respuesta[i][0] +"\n"
+            print(nueva_respuesta)
         case "Municipio":
-            print(2)
+            tablas = conn.consultar_db(configuracion.get("consultas", "nombres_columnas").format(tabla=data["tipo"]))
+            respuesta = conn.consultar_db(configuracion.get("consultas_municipio", data["consulta"]))
+            numero_de_filas = len(respuesta)
+            nueva_respuesta = tablas[0][0] +"\n"
+            for i in range(numero_de_filas):
+                nueva_respuesta += respuesta[i][0] +"\n"
+            print(nueva_respuesta)
         case "PadronElectoral":
-            print(3)
+            tablas = conn.consultar_db(configuracion.get("consultas", "nombres_columnas").format(tabla=data["tipo"]))
+            respuesta = conn.consultar_db(configuracion.get("consultas_padronelectoral", data["consulta"]).format(id=data["id"], year=data["year"]))
+            numero_de_filas = len(respuesta)
+            nueva_respuesta = tablas[0][0] +"\n"
+            for i in range(numero_de_filas):
+                nueva_respuesta += respuesta[i][0] +"\n"
+            print(nueva_respuesta)
         case "Tpobreza":
-            print(4)
+            tablas = conn.consultar_db(configuracion.get("consultas", "nombres_columnas").format(tabla=data["tipo"]))
+            respuesta = conn.consultar_db(configuracion.get("consultas_delincuencia", data["consulta"]).format(id=data["id"], year=data["year"]))
+            numero_de_filas = len(respuesta)
+            nueva_respuesta = tablas[0][0] +"\n"
+            for i in range(numero_de_filas):
+                nueva_respuesta += respuesta[i][0] +"\n"
+            print(nueva_respuesta)
         case "Votos":
             tablas = conn.consultar_db(configuracion.get("consultas", "nombres_columnas").format(tabla=data["tipo"]))
             respuesta = conn.consultar_db(configuracion.get("consultas_votos", "votos_por_seccion").format(id=data["id"], year=data["year"]))
             numero_de_filas = len(respuesta)
-            nueva_respuesta = tablas[0][0]
+            nueva_respuesta = tablas[0][0] +"\n"
             nueva_respuesta = nueva_respuesta.replace(",V_VALIDOS,V_CAN_NREG,V_NULOS,TOTAL_V,LISTA_N","")+"\n"
             for i in range(0,numero_de_filas):
                 nueva_respuesta += respuesta[i][0] + "\n"

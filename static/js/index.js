@@ -83,7 +83,7 @@ function generar_consultas(){
     const div_filtro = document.getElementById("filtros");
     const input = document.querySelector("input[name='consultas']:checked");
     console.log(input.value)
-    if(input.value == "Votos por seccion" || input.value == "Votos por id"){
+    if(input.value != "Informacion_municipio"){
         //construir input
         let year = document.createElement("input");
         let id = document.createElement("input");
@@ -115,8 +115,18 @@ function generar_consultas(){
         div_filtro.appendChild(borrar);
         boton.addEventListener("click",(e)=>{
             e.preventDefault();
+            let tipo = "";
+            let valor = input.value;
+            //encontramos la tabla para la consulta
+            for (let i = 0; i < LISTAS.TABLAS.length; i++) {
+                if(valor.includes(LISTAS.TABLAS[i].toLowerCase())){
+                    tipo = LISTAS.TABLAS[i];
+                }
+                
+            }
+
             let data = {
-                tipo:LISTAS.TABLAS[5],
+                tipo:tipo,
                 consulta:input.value,
                 year:year.value,
                 id:id.value
@@ -130,6 +140,27 @@ function generar_consultas(){
             e.preventDefault();
             sessionStorage.removeItem("consulta");
         })
+    } else{
+        let boton = document.createElement("button");
+        //botones
+        boton.textContent = "Guardar"
+        boton.setAttribute("type","button");
+        boton.setAttribute("id","bfiltros");
+        div_filtro.appendChild(boton);
+
+        boton.addEventListener("click",(e)=>{
+            e.preventDefault();
+            let data = {
+                tipo:"Municipio",
+                consulta:input.value,
+                year:0,
+                id:""
+            }
+            consulta_fetch(LISTAS.RUTAS[4],data)
+            .then(data=>{
+                sessionStorage.setItem("consulta",data.data);
+            });
+        });
     }
 }
 
@@ -229,9 +260,21 @@ setTimeout(()=>{
             let div_columnas = document.querySelector("#consultas");
             let fragmento = document.createDocumentFragment();
             let arreglo = [];
-            if(botones_radio.value=="Votos"){
+            //seleccion de arreglos
+            if(botones_radio.value == LISTAS.TABLAS[0]){
+                arreglo = CONSULTAS.APOYOS;
+            } else if(botones_radio.value == LISTAS.TABLAS[1]){
+                arreglo = CONSULTAS.DELINCUENCIA;
+            } else if(botones_radio.value == LISTAS.TABLAS[2]){
+                arreglo = CONSULTAS.MUNICIPIO;
+            } else if( botones_radio.value == LISTAS.TABLAS[3]){
+                arreglo = CONSULTAS.PADRON;
+            } else if( botones_radio.value == LISTAS.TABLAS[4]){
+                arreglo = CONSULTAS.POBREZA;
+            } else if( botones_radio.value == LISTAS.TABLAS[5]){
                 arreglo = CONSULTAS.VOTOS;
             }
+
             for (let i = 0; i < arreglo.length; i++) {
                 let ii = document.createElement("i");
                 let radio = document.createElement("input");
