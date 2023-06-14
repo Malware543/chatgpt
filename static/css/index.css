@@ -5,7 +5,7 @@
     height: 40%;
 }
 #chat{
-    background-color: rgb(163, 17, 160);
+    background: #373739;
     width: 90%;
     height: 50%;
     margin-left: 5%;
@@ -19,12 +19,12 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 85%;
     height: 100%;
-    left: 20%;
+    left: 15%;
     top: 0px;
     gap: .5%;
-    background-color: blue;
+    background: #020202;
 }
 
 .enviar{
@@ -61,7 +61,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 15%;
     height: 100%;
     left: 0px;
     top: 0px;
@@ -75,21 +75,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    width: 100%;
+    background-color: #020202;
+    width: 95%;
     height: 10%;
 }
 
 /* boton del menu */
 .barra_herramientas .menu .nuevo_chat{
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     justify-content: start;
     align-items: center;
     width: 70%;
     height: 65%;
     border: 1px solid black;
-    background-color: #cccccc55;
+    background-color: #cccccc55; */
+    display: inline-block;
+    padding: 10px;
+    background-color: #19191a;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    width: 70%;
+    height: 65%;
+    border: 1px solid black;
+    cursor: pointer;
+
+    padding: 3px 10px;
+    border: #60d4ea 1px solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .barra_herramientas .contenido{
@@ -98,10 +113,11 @@
     flex-direction: column;
     justify-content: top;
     align-items: center;
-    width: 100%;
+    width: 95%;
     height: 80%;
     gap: .5%;
-    background-color: green;
+    background-color: #373739;
+    color: white;
 }
 
 .barra_herramientas .pie{
@@ -110,8 +126,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #ccc;
-    width: 100%;
+    background-color: #020202;
+    color: white;
+    width: 95%;
     height: 10%;
     top: 0%;
     gap: 20%;
@@ -120,6 +137,20 @@
 .barra_herramientas .pie .salir{
     width: 50%;
     height: 50%;
+
+    display: inline-block;
+    padding: 10px;
+    background-color: #19191a;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid black;
+    cursor: pointer;
+
+    padding: 3px 10px;
+    border: #60d4ea 1px solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 /* mensajes */
@@ -152,8 +183,9 @@
     justify-content: center;
     width: 100%;
     height: 15%;
-    background: #19191a ;
+    background-color: #19191a ;
     color: white;
+    border-radius: 5px;
 }
 
 .principal .consultas .opciones{
@@ -163,8 +195,8 @@
     width: 100%;
     height: 85%;
     background: #020202;
-    
     gap: 5%;
+   
 }
 
 .principal .consultas .opciones .tabla{
@@ -173,6 +205,7 @@
     flex-direction: column;
     width: 33%;
     height: 100%;
-    background-color: rgb(250, 250, 250);
+    background: #373739;
     overflow-y: auto;
+    border-radius: 5px;
 }
