@@ -4,5 +4,10 @@ export const LISTAS = Object.freeze({
 })
 
 export const CONSULTAS = Object.freeze({
-    VOTOS:["Votos_por_id", "Votos_por_seccion"]
+    APOYOS:["Informacion_apoyos"],
+    DELINCUENCIA:["Informacion_delincuencia"],
+    MUNICIPIO:["Informacion_municipio"],
+    PADRON:["Informacion_padronelectoral"],
+    POBREZA:[""],
+    VOTOS:["Informacion_votos_id", "Informacion_votos_seccion"]
 });
