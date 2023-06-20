@@ -194,10 +194,20 @@ def consultas():
                 nueva_respuesta += respuesta[i][0] +"\n"
             print(nueva_respuesta)
         case "Tpobreza":
-            tablas = conn.consultar_db(configuracion.get("consultas", "nombres_columnas").format(tabla=data["tipo"]))
-            respuesta = conn.consultar_db(configuracion.get("consultas_delincuencia", data["consulta"]).format(id=data["id"], year=data["year"]))
+            diccionario_tablas = {
+                "pobreza" : "ClaveMunicipal,YearP,Pobreza,PobExt,PobExtCar,PobMod,NpobNvul,RezagoEd",
+                "carencias" : "ClaveMunicipal,YearP,CarSalud,CarSaludPor,CarSS,CarCalidadViv,CarServViv,CarAlim",
+                "ingresos" : "ClaveMunicipal,YearP,IngresoInf,IngresoInfE"
+            }
+            if(data["consulta"].find("pobreza")):
+                tablas = diccionario_tablas["pobreza"]
+            elif(data["consulta"].find("carencias")):
+                tablas  = diccionario_tablas["carencias"]
+            else:
+                tablas = diccionario_tablas["ingresos"]
+            respuesta = conn.consultar_db(configuracion.get("consultas_pobreza", data["consulta"]).format(id=data["id"], year=data["year"]))
             numero_de_filas = len(respuesta)
-            nueva_respuesta = tablas[0][0] +"\n"
+            nueva_respuesta = tablas+"\n"
             for i in range(numero_de_filas):
                 nueva_respuesta += respuesta[i][0] +"\n"
             print(nueva_respuesta)
@@ -206,7 +216,7 @@ def consultas():
             respuesta = conn.consultar_db(configuracion.get("consultas_votos", "votos_por_seccion").format(id=data["id"], year=data["year"]))
             numero_de_filas = len(respuesta)
             nueva_respuesta = tablas[0][0] +"\n"
-            nueva_respuesta = nueva_respuesta.replace(",V_VALIDOS,V_CAN_NREG,V_NULOS,TOTAL_V,LISTA_N","")+"\n"
+            nueva_respuesta = nueva_respuesta[0:97]+"\n"
             for i in range(0,numero_de_filas):
                 nueva_respuesta += respuesta[i][0] + "\n"
             print(nueva_respuesta)
@@ -217,5 +227,5 @@ def consultas():
 
 if(__name__ == "__main__"):
     
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5000, host="192.168.31.150");
     

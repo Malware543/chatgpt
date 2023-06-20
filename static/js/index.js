@@ -81,24 +81,30 @@ function llenado_div(div_tablas){
 
 function generar_consultas(){
     const div_filtro = document.getElementById("filtros");
-    const input = document.querySelector("input[name='consultas']:checked");
-    console.log(input.value)
-    if(input.value != "Informacion_municipio"){
+    const consulta = document.querySelector("input[name='consultas']:checked");
+    const tabla = document.querySelector("input[name='tablas']:checked")
+    console.log(consulta.value)
+    if(consulta.value != "Informacion_municipio"){
         //construir input
         let year = document.createElement("input");
         let id = document.createElement("input");
         let label1 = document.createElement("label");
         let label2 = document.createElement("label");
+        let label3 = document.createElement("label");
         let boton = document.createElement("button");
         let borrar = document.createElement("button");
+        let temperatura = document.createElement("input");
         //dar propiedades input
         year.setAttribute("type","text");
         year.setAttribute("placeholder", "Ingrese el año");
         id.setAttribute("type","text");
         id.setAttribute("placeholder", "Ingrese el id");
+        temperatura.setAttribute("type", "text");
+        temperatura.setAttribute("placeholder", "Ingrese Precisión");
         //dar propiedades label
         label1.textContent = "Año";
         label2.textContent = "Id";
+        label3.textContent = "Precisión"
         //botones
         boton.setAttribute("type","button");
         boton.setAttribute("id","bfiltros");
@@ -111,29 +117,37 @@ function generar_consultas(){
         div_filtro.appendChild(year);
         div_filtro.appendChild(label2);
         div_filtro.appendChild(id);
+        div_filtro.appendChild(label3);
+        div_filtro.appendChild(temperatura);
         div_filtro.appendChild(boton);
         div_filtro.appendChild(borrar);
         boton.addEventListener("click",(e)=>{
             e.preventDefault();
             let tipo = "";
-            let valor = input.value;
-            //encontramos la tabla para la consulta
-            for (let i = 0; i < LISTAS.TABLAS.length; i++) {
-                if(valor.includes(LISTAS.TABLAS[i].toLowerCase())){
-                    tipo = LISTAS.TABLAS[i];
+            let valor = consulta.value;
+            if(tabla.value.includes("Tpobreza")){
+                tipo = tabla.value;
+            } else{
+                //encontramos la tabla para la consulta
+                for (let i = 0; i < LISTAS.TABLAS.length; i++) {
+                    if(valor.includes(LISTAS.TABLAS[i].toLowerCase())){
+                        tipo = LISTAS.TABLAS[i];
+                    }
+                    
                 }
-                
             }
+            console.log(tipo)
+
 
             let data = {
                 tipo:tipo,
-                consulta:input.value,
+                consulta:consulta.value,
                 year:year.value,
-                id:id.value
+                id:id.value,
             }
             consulta_fetch(LISTAS.RUTAS[4],data)
             .then(data=>{
-                sessionStorage.setItem("consulta",data.data);
+                sessionStorage.setItem("consulta",data.data+"temperature:"+temperatura.value);
             });
         });
         borrar.addEventListener("click",(e)=>{
@@ -232,6 +246,7 @@ input.addEventListener("keydown", (e)=>{
         consulta_fetch(LISTAS.RUTAS[2], data)
         .then(data =>{
             crear_contenedores(chat, "Assistant", data.msg, data.date);
+            
         });
     
         document.querySelector(".mensaje").value = "";

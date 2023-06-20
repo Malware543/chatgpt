@@ -1,6 +1,7 @@
 export const LISTAS = Object.freeze({
     RUTAS:["/crear_sesion","/","/enviar_conversacion", "/tablas", "/consultas"],
-    TABLAS:["Apoyos", "Delincuencia", "Municipio", "PadronElectoral","Tpobreza", "Votos"]
+    TABLAS:["Apoyos", "Delincuencia", "Municipio", "PadronElectoral","Tpobreza", "Votos"],
+    TABLASP:["pobreza", "carencias", "ingresos"]
 })
 
 export const CONSULTAS = Object.freeze({
@@ -8,6 +9,6 @@ export const CONSULTAS = Object.freeze({
     DELINCUENCIA:["Informacion_delincuencia"],
     MUNICIPIO:["Informacion_municipio"],
     PADRON:["Informacion_padronelectoral"],
-    POBREZA:[""],
+    POBREZA:["Informacion_pobreza","Informacion_carencias","Informacion_ingresos"],
     VOTOS:["Informacion_votos_id", "Informacion_votos_seccion"]
 });
