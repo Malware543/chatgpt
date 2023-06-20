@@ -90,16 +90,21 @@ function generar_consultas(){
         let id = document.createElement("input");
         let label1 = document.createElement("label");
         let label2 = document.createElement("label");
+        let label3 = document.createElement("label");
         let boton = document.createElement("button");
         let borrar = document.createElement("button");
+        let temperatura = document.createElement("input");
         //dar propiedades input
         year.setAttribute("type","text");
         year.setAttribute("placeholder", "Ingrese el año");
         id.setAttribute("type","text");
         id.setAttribute("placeholder", "Ingrese el id");
+        temperatura.setAttribute("type", "text");
+        temperatura.setAttribute("placeholder", "Ingrese Precisión");
         //dar propiedades label
         label1.textContent = "Año";
         label2.textContent = "Id";
+        label3.textContent = "Precisión"
         //botones
         boton.setAttribute("type","button");
         boton.setAttribute("id","bfiltros");
@@ -112,6 +117,8 @@ function generar_consultas(){
         div_filtro.appendChild(year);
         div_filtro.appendChild(label2);
         div_filtro.appendChild(id);
+        div_filtro.appendChild(label3);
+        div_filtro.appendChild(temperatura);
         div_filtro.appendChild(boton);
         div_filtro.appendChild(borrar);
         boton.addEventListener("click",(e)=>{
@@ -136,11 +143,11 @@ function generar_consultas(){
                 tipo:tipo,
                 consulta:consulta.value,
                 year:year.value,
-                id:id.value
+                id:id.value,
             }
             consulta_fetch(LISTAS.RUTAS[4],data)
             .then(data=>{
-                sessionStorage.setItem("consulta",data.data);
+                sessionStorage.setItem("consulta",data.data+"temperature:"+temperatura.value);
             });
         });
         borrar.addEventListener("click",(e)=>{
