@@ -235,4 +235,51 @@ label{
     border: #60d4ea 1px solid;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
+
+    cursor: pointer;
+}
+
+.principal .consultas .opciones .tabla #bconsultas{
+    background: #020202;
+    color: white;
+    width: 50%;
+    justify-content: center;
+    margin: 5px auto;
+
+    padding: 5px 10px;
+    border: #60d4ea 1px solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    cursor: pointer;
+}
+
+.principal .consultas .opciones .tabla #bfiltros{
+    background: #020202;
+    color: white;
+    width: 50%;
+    justify-content: center;
+    margin: 5px auto;
+
+    padding: 5px 10px;
+    border: #60d4ea 1px solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    cursor: pointer;
+}
+
+.principal .consultas .opciones .tabla #borrar{
+    background: #020202;
+    color: white;
+    width: 50%;
+    justify-content: center;
+    margin: 5px auto;
+
+    padding: 5px 10px;
+    border: #60d4ea 1px solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    cursor: pointer;
 }
