@@ -143,11 +143,11 @@ function generar_consultas(){
                 tipo:tipo,
                 consulta:consulta.value,
                 year:year.value,
-                id:id.value,
+                id:id.value
             }
             consulta_fetch(LISTAS.RUTAS[4],data)
             .then(data=>{
-                sessionStorage.setItem("consulta",data.data+"temperature:"+temperatura.value);
+                sessionStorage.setItem("consulta",data.data+"\ntemperature:"+temperatura.value);
             });
         });
         borrar.addEventListener("click",(e)=>{
