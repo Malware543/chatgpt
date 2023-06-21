@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from librerias.conexion import CONEXION
 #clave_tesjo = "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"
 #clave_privada = "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"
-clave_tesjo = "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"
+clave_tesjo = "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"
 #clave_premiun =  "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"
 
 #arcivo de configuracion
@@ -217,5 +217,5 @@ def consultas():
 
 if(__name__ == "__main__"):
     
-    app.run(debug=True, port=5000, host="192.168.31.194");
+    app.run(debug=True, port=5000);
     
