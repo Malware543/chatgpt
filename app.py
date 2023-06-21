@@ -227,5 +227,5 @@ def consultas():
 
 if(__name__ == "__main__"):
     
-    app.run(debug=True, port=5000, host="192.168.31.150");
+    app.run(debug=True, port=5000)
     
