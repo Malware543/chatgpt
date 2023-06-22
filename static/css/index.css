@@ -1,5 +1,9 @@
+label{
+    color: white;
+}
+
 .consultas{
-    background-color: azure ;
+    background-color: #020202 ;
     position: relative;
     width: 100%;
     height: 40%;
@@ -14,7 +18,9 @@
     flex-direction: column;
     gap: 1.5%;
     overflow: auto;
+    border: 1px solid white;
 }
+
 .principal{
     position: absolute;
     display: flex;
@@ -55,6 +61,7 @@
     border: 1px solid #ccc;
     border-radius: 0 4px 4px 0;
     background-color: #f2f2f2;
+    
 }
 /* lateral */
 .barra_herramientas{
@@ -78,6 +85,7 @@
     background-color: #020202;
     width: 95%;
     height: 10%;
+    border: .5px solid white;
 }
 
 /* boton del menu */
@@ -118,6 +126,7 @@
     gap: .5%;
     background-color: #373739;
     color: white;
+    border: .5px solid white;
 }
 
 .barra_herramientas .pie{
@@ -132,6 +141,7 @@
     height: 10%;
     top: 0%;
     gap: 20%;
+    border: .5px solid white;
 }
 /* boton salir */
 .barra_herramientas .pie .salir{
@@ -181,11 +191,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 99%;
     height: 15%;
     background-color: #19191a ;
     color: white;
     border-radius: 5px;
+    border: .5px solid white;
+    top: .5px;
+    margin: 5px auto;
 }
 
 .principal .consultas .opciones{
@@ -193,7 +206,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 85%;
+    height: 80%;
     background: #020202;
     gap: 5%;
    
@@ -203,9 +216,166 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 33%;
-    height: 100%;
+    width: 33.33%;
+    height: 95%;
     background: #373739;
     overflow-y: auto;
     border-radius: 5px;
+
 }
+
+.principal .consultas .opciones .tabla #btablas{
+    background: #020202;
+    color: white;
+    width: 50%;
+    justify-content: center;
+    margin: 5px auto;
+
+    padding: 5px 10px;
+    border: #60d4ea 1px solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    cursor: pointer;
+}
+
+.principal .consultas .opciones .tabla #bconsultas{
+    background: #020202;
+    color: white;
+    width: 50%;
+    justify-content: center;
+    margin: 5px auto;
+
+    padding: 5px 10px;
+    border: #60d4ea 1px solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    cursor: pointer;
+}
+
+.principal .consultas .opciones .tabla #bfiltros{
+    background: #020202;
+    color: white;
+    width: 50%;
+    justify-content: center;
+    margin: 5px auto;
+
+    padding: 5px 10px;
+    border: #60d4ea 1px solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    cursor: pointer;
+}
+
+.principal .consultas .opciones .tabla #borrar{
+    background: #020202;
+    color: white;
+    width: 50%;
+    justify-content: center;
+    margin: 5px auto;
+
+    padding: 5px 10px;
+    border: #60d4ea 1px solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    cursor: pointer;
+}
+
+.configuracion{
+    position:absolute;
+    left: 90%;
+    top: 40%;
+}
+
+/* ventana flotanete */
+.flotante{
+    position: absolute;
+    z-index: 10;
+    width: 50%;
+    height: 50%;
+    background-color: #373739;
+    left: 30%;
+    top:30%;
+    border-radius: 25px;
+    border: .5px solid white;
+    
+}
+/* configuracion de hijos ventana flotante */
+.flotante .flotante_c{
+    position: relative;
+    width: 99.5%;
+    height: 7%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: #19191a;
+    border: .5px solid white;
+    border-radius: 25px;
+    color:white;
+}
+.flotante .flotante_c .boton_cerrar{
+    position: relative;
+    left: 30%;
+}
+
+.flotante .flotante_i{
+    position: relative;
+    width:100%;
+    height:84%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 2%;
+}
+/* agregado de estilos para los inputs */
+.flotante .flotante_i .input_configuracion{
+    width: 55%;
+}
+
+.flotante .flotante_p{
+    position:relative;
+    width: 100%;
+    height: 8.5%;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25%;
+    background-color: #19191a;
+    border:0.5px solid white;
+    border-radius: 25px;
+}
+
+/* oscurecer pantalla */
+.activo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Color de fondo oscuro */
+    opacity: 0.65; /* Opacidad de la capa, ajusta el valor según desees */
+    z-index: 9; /* Asegura que la capa esté en la parte superior */
+}
+
+/* boton de configuracion */
+/* .boton_configuracion{
+    background-image: url("/static/img/configuracion.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Otros estilos para el botón 
+    width: 200px;
+    height: 50px;
+    color: white;
+    background-color: blue;
+    border: none;
+    cursor: pointer;
+} */
