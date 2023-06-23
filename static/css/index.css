@@ -282,7 +282,6 @@ button{
 
     cursor: pointer;
 }
-
 /* Separacion de los radio button */
 
 .principal .tabla input[type="radio"]{
@@ -292,3 +291,99 @@ button{
 .principal .tabla input[type="radio"]{
     margin-bottom: 5px;
 }
+
+.configuracion{
+    position:absolute;
+    left: 90%;
+    top: 40%;
+}
+
+/* ventana flotanete */
+.flotante{
+    position: absolute;
+    z-index: 10;
+    width: 50%;
+    height: 50%;
+    background-color: #373739;
+    left: 30%;
+    top:30%;
+    border-radius: 25px;
+    border: .5px solid white;
+    
+}
+/* configuracion de hijos ventana flotante */
+.flotante .flotante_c{
+    position: relative;
+    width: 99.5%;
+    height: 7%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: #19191a;
+    border: .5px solid white;
+    border-radius: 25px;
+    color:white;
+}
+.flotante .flotante_c .boton_cerrar{
+    position: relative;
+    left: 30%;
+}
+
+.flotante .flotante_i{
+    position: relative;
+    width:100%;
+    height:84%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 2%;
+}
+/* agregado de estilos para los inputs */
+.flotante .flotante_i .input_configuracion{
+    width: 55%;
+}
+
+.flotante .flotante_p{
+    position:relative;
+    width: 100%;
+    height: 8.5%;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25%;
+    background-color: #19191a;
+    border:0.5px solid white;
+    border-radius: 25px;
+}
+
+/* oscurecer pantalla */
+.activo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Color de fondo oscuro */
+    opacity: 0.65; /* Opacidad de la capa, ajusta el valor según desees */
+    z-index: 9; /* Asegura que la capa esté en la parte superior */
+}
+
+/* boton de configuracion */
+/* .boton_configuracion{
+    background-image: url("/static/img/configuracion.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Otros estilos para el botón 
+    width: 200px;
+    height: 50px;
+    color: white;
+    background-color: blue;
+    border: none;
+    cursor: pointer;
+} */
